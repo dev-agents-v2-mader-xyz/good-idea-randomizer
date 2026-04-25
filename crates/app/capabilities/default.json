@@ -1,0 +1,9 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Default capabilities for Good Idea Randomizer",
+  "windows": ["main"],
+  "permissions": [
+    "core:default"
+  ]
+}

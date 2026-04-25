@@ -1,0 +1,222 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-from: #1a0533;
+  --bg-to: #0d1b4b;
+  --card-bg: rgba(255, 255, 255, 0.06);
+  --card-border: rgba(255, 255, 255, 0.12);
+  --text-primary: #f0e6ff;
+  --text-muted: rgba(240, 230, 255, 0.6);
+  --accent: #c084fc;
+  --yes-bg: rgba(16, 185, 129, 0.15);
+  --yes-border: rgba(16, 185, 129, 0.4);
+  --yes-text: #6ee7b7;
+  --no-bg: rgba(239, 68, 68, 0.15);
+  --no-border: rgba(239, 68, 68, 0.4);
+  --no-text: #fca5a5;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, var(--bg-from) 0%, var(--bg-to) 100%);
+  min-height: 100vh;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  padding: 48px 40px;
+  width: 100%;
+  max-width: 560px;
+  backdrop-filter: blur(20px);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.oracle-eye {
+  font-size: 4rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 20px rgba(192, 132, 252, 0.8));
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(192, 132, 252, 0.8)); }
+  50% { transform: scale(1.08); filter: drop-shadow(0 0 32px rgba(192, 132, 252, 1)); }
+}
+
+.heading {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.subheading {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-top: -8px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.input {
+  width: 100%;
+  padding: 14px 18px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input::placeholder {
+  color: var(--text-muted);
+}
+
+.input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(192, 132, 252, 0.2);
+}
+
+.btn-primary {
+  padding: 14px 24px;
+  font-size: 1rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #7c3aed, #c084fc);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+  letter-spacing: 0.01em;
+}
+
+.btn-primary:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.verdict {
+  border-radius: 16px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  animation: appear 0.35s ease-out;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(12px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.verdict--yes {
+  background: var(--yes-bg);
+  border: 1px solid var(--yes-border);
+}
+
+.verdict--no {
+  background: var(--no-bg);
+  border: 1px solid var(--no-border);
+}
+
+.verdict-emoji {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.verdict-label {
+  font-size: 1.75rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+.verdict--yes .verdict-label {
+  color: var(--yes-text);
+}
+
+.verdict--no .verdict-label {
+  color: var(--no-text);
+}
+
+.verdict-reason {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+  font-style: italic;
+  max-width: 420px;
+}
+
+.btn-again {
+  margin-top: 4px;
+  padding: 10px 22px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn-again:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+.btn-again:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 32px 20px;
+  }
+
+  .heading {
+    font-size: 1.75rem;
+  }
+
+  .oracle-eye {
+    font-size: 3rem;
+  }
+
+  .verdict-label {
+    font-size: 1.4rem;
+  }
+}

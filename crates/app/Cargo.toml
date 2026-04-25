@@ -1,0 +1,17 @@
+[package]
+name = "app"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ui = { path = "../ui" }
+yew = { version = "0.21", features = ["csr"] }
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+tauri = { version = "2", features = [] }
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+wasm-bindgen = "0.2"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
