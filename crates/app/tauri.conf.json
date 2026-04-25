@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "identifier": "xyz.mader.good-idea-randomizer",
   "build": {
-    "frontendDist": "../frontend/dist"
+    "frontendDist": "../../dist"
   },
   "app": {
     "windows": [
