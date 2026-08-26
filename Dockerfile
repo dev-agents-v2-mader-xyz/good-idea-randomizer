@@ -2,7 +2,8 @@
 FROM rust:1-slim AS wasm-builder
 RUN apt-get update && apt-get install -y curl pkg-config libssl-dev && rm -rf /var/lib/apt/lists/*
 RUN rustup target add wasm32-unknown-unknown
-RUN cargo install trunk wasm-bindgen-cli
+RUN cargo install wasm-bindgen-cli
+RUN curl -sL https://github.com/trunk-rs/trunk/releases/download/v0.21.14/trunk-x86_64-unknown-linux-gnu.tar.gz | tar xzf - -C /usr/local/bin
 WORKDIR /app
 COPY . .
 WORKDIR /app/crates/frontend
